@@ -2,7 +2,7 @@ package com.mycompany.mensajes_app;
 
 import java.util.Scanner;
 
-public class mensajeService {
+public class restauranteService {
     public static void crearUsuario(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Escribe tu nombre");
@@ -12,25 +12,26 @@ public class mensajeService {
         
         System.out.println("");
         
-        Mensajes mensajes = new Mensajes();
+        Usuario mensajes = new Usuario();
+        
         
         mensajes.setNombre(nombre);
         mensajes.setTelefono(telefono);
         
-        MensajeDAO.crearMensajeDB(mensajes);
+        RestauranteDAO.crearUsuarioDB(mensajes);
     }
-    public static void listarMensajes(){
-        MensajeDAO.leerMensajesDB();
+    public static void listarUsuario(){
+        RestauranteDAO.leerMensajesDB();
     }
-    public static void borrarMensajes(){
+    public static void borrarUsuario(){
         Scanner sc = new Scanner(System.in);
         
         System.out.println("Indica el id a borrar");
         int  id = sc.nextInt();
         
-        MensajeDAO.borrarMensajeDB(id);
+        RestauranteDAO.borrarMensajeDB(id);
     }
-    public static void editarMensajes(){
+    public static void editarUsuario(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Escribe tu nuevo mensaje");
         String user = sc.nextLine();
@@ -38,10 +39,10 @@ public class mensajeService {
         System.out.println("Indica el ID del mensaje a ediar");
         int id = sc.nextInt();
         
-        Mensajes actualizacion = new Mensajes();
+        Usuario actualizacion = new Usuario();
         actualizacion.setId(id);
         actualizacion.setNombre(user);
         
-        MensajeDAO.actualizarMensajeDB(actualizacion);
+        RestauranteDAO.actualizarMensajeDB(actualizacion);
     }
 }

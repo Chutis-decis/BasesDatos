@@ -5,10 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MensajeDAO {
+public class RestauranteDAO {
     
     
-    public static void crearMensajeDB(Mensajes mensajes){
+    public static void crearUsuarioDB(Usuario usuario){
         Conexion db_conect = new Conexion();
         
         try (Connection conexion=db_conect.get_Conection()){
@@ -17,9 +17,12 @@ public class MensajeDAO {
             PreparedStatement p = null;
             try{
                 String query="INSERT INTO persona(nombre,telefono) VALUES (?,?)";
+                
                 p=conexion.prepareStatement(query);
-                p.setString(1, mensajes.getNombre()); // el 1 parametro va hacer el nombre
-                p.setInt(2, mensajes.getTelefono());// el 2 parametro serra el telefono 
+                
+                p.setString(1, usuario.getNombre()); // el 1 parametro va hacer el nombre
+                p.setInt(2, usuario.getTelefono());// el 2 parametro serra el telefono 
+               
                 p.executeUpdate(); //ejecutar actualizaciones
                 System.out.println("Usuaro creado ");
             }catch(Exception e){
@@ -48,11 +51,11 @@ public class MensajeDAO {
           }
           
       }catch(SQLException e){
-          System.out.println("No se pudieron recuperar los mnsajes");
+          System.out.println("No se pudieron recuperar a el usuario");
             System.out.println(e);
         }
     }
-    public static void borrarMensajeDB(int id_mensaje){
+    public static void borrarMensajeDB(int id_usuario){
         Conexion db_conect = new Conexion();
         
         try(Connection conexion = db_conect.get_Conection()){
@@ -61,9 +64,9 @@ public class MensajeDAO {
            try{
                String query ="DELETE FROM persona WHERE id=? ";
                p=conexion.prepareStatement(query);
-               p.setInt(1, id_mensaje);
+               p.setInt(1, id_usuario);
                p.executeUpdate();
-               System.out.println("El mensaje fue borrado");
+               System.out.println("El Usuario fue borrado");
            }catch(SQLException e){
                System.out.println(e);
                System.out.println("No se pudo eliminar al usuario");
@@ -72,7 +75,7 @@ public class MensajeDAO {
             System.out.println(e);
         }
     }
-    public static void actualizarMensajeDB(Mensajes mensajes){
+    public static void actualizarMensajeDB(Usuario usuario){
         Conexion db_conect = new Conexion();
         
         try(Connection conexion = db_conect.get_Conection()){
@@ -81,8 +84,8 @@ public class MensajeDAO {
             try{
                String query = "UPDATE persona SET nombre = ? WHERE id = ?";
                p=conexion.prepareStatement(query);
-               p.setString(1, mensajes.getNombre());
-               p.setInt(2, mensajes.getId());
+               p.setString(1, usuario.getNombre());
+               p.setInt(2, usuario.getId());
                p.executeUpdate();
                
                 System.out.println("El mensaje se actualizo correctanente");

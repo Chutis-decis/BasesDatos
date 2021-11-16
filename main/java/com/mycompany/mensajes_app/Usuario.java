@@ -9,16 +9,16 @@ package com.mycompany.mensajes_app;
  *
  * @author Luis Alfredo
  */
-public class Mensajes {
+public class Usuario {
     int id; 
     String nombre;
     int telefono;
     
     
-    public Mensajes(){
+    public Usuario(){
         
     }
-    public Mensajes(String nombre,int telefono){
+    public Usuario(String nombre,int telefono){
         this.nombre=nombre;
         this.telefono= telefono;
     }

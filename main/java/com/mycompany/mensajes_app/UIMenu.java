@@ -23,16 +23,16 @@ public class UIMenu {
             
             switch(opcion){
                 case 1:
-                    mensajeService.crearUsuario();
+                    restauranteService.crearUsuario();
                     break;
                 case 2: 
-                    mensajeService.listarMensajes();
+                    restauranteService.listarUsuario();
                     break;
                 case 3: 
-                    mensajeService.editarMensajes();
+                    restauranteService.editarUsuario();
                     break;
                 case 4:
-                    mensajeService.borrarMensajes();
+                    restauranteService.borrarUsuario();
                     break;
                 default:
                     break;
@@ -40,7 +40,5 @@ public class UIMenu {
         }while(opcion != 5);
     
     }
-    public static void Menu(){
-        
-    }
+    
 }
